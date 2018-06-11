@@ -1,6 +1,10 @@
 Comparative taxes
 =================
 
+## Besoin client
+
+L’objectif du projet à réaliser est de permettre à un commerçant d’encoder les produits qu’il désire vendre sur Internet. Étant donné qu’il veut vendre ses produits dans plusieurs pays, le prix “TVA comprise” devra être calculé en fonction de l’adresse de facturation du client. Le commerçant aimerait avoir une vue d’ensemble dans son backoffice de ses produits et le prix TVAC en fonction des différents taux de TVA disponibles. Il aimerait aussi pouvoir afficher la liste avec uniquement le(s) taux de TVA qu’il aura sélectionné(s) dans un filtre. Il est très important que le mécanisme de calcul du prix soit une fonction unique qui sera utilisée aussi bien dans l’interface d’administration du commerçant que, par exemple, dans le shop utilisé par les clients. C’est à vous qu’il s’adresse pour réaliser la demande.
+
 ## Informations
 - Projet Symfony 3.4 avec autowire.
 - Il se peut que le projet nécessite quelques modifications avant d'être fonctionnel.
