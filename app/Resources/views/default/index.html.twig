@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="card card-body bg-light">
+            <h1>
+                Bienvenue sur la Job Application !
+            </h1>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"/>
+    {% stylesheets
+        '@AppBundle/Resources/scss/style.scss'
+        filter='cssrewrite' %}
+        <link href="{{ asset_url }}" rel="stylesheet" type="text/css"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    {% javascripts
+        '@AppBundle/Resources/js/scripts.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock javascripts %}
