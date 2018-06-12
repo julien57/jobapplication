@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"/>
+    {{ parent() }}
     {% stylesheets
         '@AppBundle/Resources/scss/style.scss'
         filter='cssrewrite' %}
@@ -20,8 +20,7 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    {{ parent() }}
     {% javascripts
         '@AppBundle/Resources/js/scripts.js' %}
         <script src="{{ asset_url }}"></script>
