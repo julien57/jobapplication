@@ -18,10 +18,10 @@ L’objectif du projet à réaliser est de permettre à un commerçant d’encod
 - Le travail devra être commité et pushé dans la branche master.
 
 ## Suppléments 
+- Utilisation de Services et /ou d'Extensions Twig.
 - Utilisation de Form Validator et des champs de FormType adaptés aux Entités.
 - Pratique d'atomicité des commits pour une meilleure lisibilité des étapes de développement.
-- Utilisation d'Extensions Twig et/ou de Services.
-- Pratique des Standard de Symfony 3.
+- Pratique des Standards de Symfony 3.4 (y compris dans le coding style et dans les fonctions dépréciées).
 
 ## Données à saisir pour les Articles
 <table>
