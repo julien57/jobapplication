@@ -1,0 +1,58 @@
+version: '3.3'
+services:
+# ----------
+  postgres:
+    image: postgres:9.6
+    restart: always
+    volumes:
+      - postgres_pgdata:/var/lib/postgresql/data/pgdata
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_USER: symfony
+      POSTGRES_PASSWORD: dfgdfgdfg
+      POSTGRES_DB: symfony
+    ports:
+      - 5444:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    links:
+      - postgres
+    ports:
+      - 8082:8080
+# ----------
+# PHP
+  php71:
+    build:
+      context: docker/php71
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - ./docker/php71_config/www.conf:/usr/local/etc/php-fpm.d/www.conf
+      - ./docker/php71_config/php.ini:/usr/local/etc/php/php.ini
+      - .:/usr/share/nginx/html:delegated
+      - sf_vendor:/usr/share/nginx/html/vendor
+      - sf_cache:/usr/share/nginx/html/var/cache
+      - sf_logs:/usr/share/nginx/html/var/logs
+# ----------
+# Web
+  nginx:
+    image: nginx:1.15
+    restart: always
+    volumes:
+      - ./docker/nginx_config:/etc/nginx/conf.d
+      - .:/usr/share/nginx/html:delegated
+      - sf_vendor:/usr/share/nginx/html/vendor
+      - sf_cache:/usr/share/nginx/html/var/cache
+      - sf_logs:/usr/share/nginx/html/var/logs
+    links:
+      - php71
+    ports:
+      - 8181:80
+# ----------
+volumes:
+  postgres_pgdata: {}
+  sf_vendor: {}
+  sf_cache: {}
+  sf_logs: {}

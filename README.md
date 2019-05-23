@@ -1,6 +1,68 @@
 Comparative taxes
 =================
 
+## Docker
+
+### Pré-requis
+
+- Installer docker (sous Mac : brew cask install docker): https://www.docker.com/get-started
+- **Ajouter le domaines** à son /etc/hosts
+
+``` console
+127.0.0.1 job-application.local
+```
+
+- **Copier** le *docker/parameters_ansible.yml* vers *app/config/parameters.yml*
+
+``` console
+$ cp -v docker/parameters_ansible.yml app/config/parameters.yml
+```
+
+### Utilisation des conteneurs
+
+**Les commandes sont à effectuer dans le dossier du projet**
+
+- Lancement
+
+``` console
+$ docker-compose up -d
+```
+
+- Afficher l'état des conteneurs
+
+``` console
+$ docker-compose ps
+```
+
+- Accès au conteneur PHP pour lancer le hook / composer / yarn...
+
+``` console
+$ docker-compose run php1 bash
+```
+
+- Arrêt des conteneurs
+
+``` console
+$ docker-compose down
+```
+
+- Forcer un build après une modification du Dockerfile PHP
+
+``` console
+$ docker-compose build
+```
+
+### Quick start
+
+``` console
+$ docker-compose up -d
+$ docker-compose run php71 bash
+# composer est accessible dans ce conteneur php71
+```
+
+- Accéder au site : http://job-application.local:8181/
+
+
 ## Besoin client
 
 L’objectif du projet à réaliser est de permettre à un commerçant d’encoder les produits qu’il désire vendre sur Internet. Étant donné qu’il veut vendre ses produits dans plusieurs pays, le prix “TVA comprise” devra être calculé en fonction de l’adresse de facturation du client. Le commerçant aimerait avoir une vue d’ensemble dans son backoffice de ses produits et le prix TVAC en fonction des différents taux de TVA disponibles. Il aimerait aussi pouvoir afficher la liste avec uniquement le(s) taux de TVA qu’il aura sélectionné(s) dans un filtre. Il est très important que le mécanisme de calcul du prix soit une fonction unique qui sera utilisée aussi bien dans l’interface d’administration du commerçant que, par exemple, dans le shop utilisé par les clients. C’est à vous qu’il s’adresse pour réaliser la demande.
