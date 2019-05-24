@@ -11,8 +11,7 @@ class TVAPrice extends AbstractExtension
     public function getFilters()
     {
         return [
-            new TwigFilter('tva_one', [$this, 'getTvaOne']),
-            new TwigFilter('tva_two', [$this, 'getTvaTwo'])
+            new TwigFilter('tva', [$this, 'getTva'])
         ];
     }
 
@@ -20,17 +19,16 @@ class TVAPrice extends AbstractExtension
      * @param int $price
      * @return float|int
      */
-    public function getTvaOne(int $price)
+    public function getTva(int $price, string $tvaType)
     {
-        return $price * Product::PERCENT_TVA_ONE;
-    }
+        if ($tvaType === 'tva_one') {
+            return $price * Product::PERCENT_TVA_ONE;
 
-    /**
-     * @param int $price
-     * @return float|int
-     */
-    public function getTvaTwo(int $price)
-    {
-        return $price * Product::PERCENT_TVA_TWO;
+        } elseif ($tvaType === 'tva_two') {
+            return $price * Product::PERCENT_TVA_TWO;
+
+        } else {
+            return $price;
+        }
     }
 }

@@ -10,28 +10,56 @@
 
             <h2>Dashboard</h2>
 
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Titre</th>
-                    <th scope="col">Contenu</th>
-                    <th scope="col">Date d'ajout</th>
-                    <th scope="col">Prix</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for product in products %}
+            <div class="row mt-3 mb-3">
+                <div class="col-md-5 m-2">
+                    <a href="{{ path('app_product_add') }}" class="btn btn-secondary">Ajouter un produit</a>
+                </div>
+                <div class="col-md-2 m-2">
+                    <form method="post" action="">
+                        <input type="hidden" name="filter_tva" value="tva_one">
+                        <button type="submit" class="btn btn-info">Prix taux 1</button>
+                    </form>
+                </div>
+                <div class="col-md-2 m-2">
+                    <form method="post" action="">
+                        <input type="hidden" name="filter_tva" value="tva_two">
+                        <button type="submit" class="btn btn-info">Prix taux 2</button>
+                    </form>
+                </div>
+                <div class="col-md-2 m-2">
+                    <form method="post" action="">
+                        <input type="hidden" name="filter_tva" value="ht">
+                        <button type="submit" class="btn btn-info">Prix HT</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
                     <tr>
-                        <th scope="row">{{ loop.index }}</th>
-                        <td>{{ product.title }}</td>
-                        <td>{{ product.content|slice(0, 100) }}...</td>
-                        <td>{{ product.createdAt|date('d/m/Y') }}</td>
-                        <td>{{ product.priceHT|tva_two|number_format(2, '.') }}€</td>
+                        <th scope="col">#</th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Contenu</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Date d'ajout</th>
+                        <th scope="col">Editer</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ product.title }}</td>
+                            <td>{{ product.content|slice(0, 100) }}...</td>
+                            <td>{{ product.priceHT|tva(filterTva)|number_format(2, '.') }}€</td>
+                            <td>{{ product.createdAt|date('d/m/Y') }}</td>
+                            <td><a class="btn btn-primary" href="{{ path('app_product_edit', {'id': product.id}) }}">Modifier</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     </div>
