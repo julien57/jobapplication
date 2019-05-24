@@ -30,6 +30,7 @@ class ProductController extends Controller
      * @Route("/ajout", name="app_product_add")
      *
      * @param Request $request
+     *
      * @return RedirectResponse|Response
      */
     public function add(Request $request)
@@ -38,16 +39,16 @@ class ProductController extends Controller
         $form = $this->createForm(ProductType::class, $product)->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $this->em->persist($product);
             $this->em->flush();
 
             $this->addFlash('notice', 'Produit ajouté !');
+
             return $this->redirectToRoute('app_home_index');
         }
 
         return $this->render('product/add.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 
@@ -56,6 +57,7 @@ class ProductController extends Controller
      *
      * @param Product $product
      * @param Request $request
+     *
      * @return RedirectResponse|Response
      */
     public function edit(Product $product, Request $request)
@@ -63,15 +65,15 @@ class ProductController extends Controller
         $form = $this->createForm(ProductType::class, $product)->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $this->em->flush();
 
             $this->addFlash('notice', 'Produit modifié !');
+
             return $this->redirectToRoute('app_home_index');
         }
 
         return $this->render('product/edit.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 }

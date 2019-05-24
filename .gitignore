@@ -18,3 +18,5 @@
 /web/js/
 /web/css/
 /.idea/
+vendor/
+.php_cs.cache

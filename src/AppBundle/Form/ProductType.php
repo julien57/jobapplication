@@ -21,22 +21,22 @@ class ProductType extends AbstractType
                 'required' => true,
                 'label' => 'Nom du produit',
                 'label_attr' => [
-                    'class' => 'col-md-12'
-                ]
+                    'class' => 'col-md-12',
+                ],
             ])
             ->add('content', TextareaType::class, [
                 'required' => true,
                 'label' => 'Description',
                 'label_attr' => [
-                    'class' => 'col-md-12'
-                ]
+                    'class' => 'col-md-12',
+                ],
             ])
             ->add('priceHT', MoneyType::class, [
                 'required' => true,
                 'label' => 'Prix HT',
                 'label_attr' => [
-                    'class' => 'col-md-12'
-                ]
+                    'class' => 'col-md-12',
+                ],
             ]);
     }
 
@@ -45,9 +45,9 @@ class ProductType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Product'
-        ));
+        $resolver->setDefaults([
+            'data_class' => 'AppBundle\Entity\Product',
+        ]);
     }
 
     /**
@@ -57,6 +57,4 @@ class ProductType extends AbstractType
     {
         return 'appbundle_product';
     }
-
-
 }

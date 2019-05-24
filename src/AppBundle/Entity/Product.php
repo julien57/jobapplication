@@ -37,6 +37,7 @@ class Product
      * @ORM\Column(type="text", nullable=false)
      *
      * @Assert\NotBlank(message="La description du produit ne doit pas être vide.")
+     *
      * @var string
      */
     private $content;
@@ -45,6 +46,7 @@ class Product
      * @ORM\Column(type="float")
      *
      * @Assert\GreaterThan(value = 0, message="Le prix HT du produit doit être supérieur à 0.")
+     *
      * @var float
      */
     private $priceHT;
@@ -56,12 +58,10 @@ class Product
      */
     private $createdAt;
 
-
     public function __construct()
     {
         $this->createdAt = new \DateTime();
     }
-
 
     /**
      * @return mixed
@@ -81,11 +81,13 @@ class Product
 
     /**
      * @param string $title
+     *
      * @return Product
      */
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -99,11 +101,13 @@ class Product
 
     /**
      * @param string $content
+     *
      * @return Product
      */
     public function setContent($content)
     {
         $this->content = $content;
+
         return $this;
     }
 
@@ -117,11 +121,13 @@ class Product
 
     /**
      * @param mixed $priceHT
+     *
      * @return Product
      */
     public function setPriceHT($priceHT)
     {
         $this->priceHT = $priceHT;
+
         return $this;
     }
 
@@ -135,11 +141,13 @@ class Product
 
     /**
      * @param \DateTime $createdAt
+     *
      * @return Product
      */
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
+
         return $this;
     }
 }
