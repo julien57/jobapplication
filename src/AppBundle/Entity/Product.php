@@ -11,9 +11,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Product
 {
-    const PERCENT_TVA_ONE = 17;
+    const PERCENT_TVA_ONE = 1.17;
 
-    const PERCENT_TVA_TWO = 20;
+    const PERCENT_TVA_TWO = 1.20;
 
     /**
      * @ORM\Id()
