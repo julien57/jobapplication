@@ -68,11 +68,3 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
-assetic:
-    debug: '%kernel.debug%'
-    use_controller: '%kernel.debug%'
-    filters:
-        cssrewrite: ~
-        scssphp:
-            file: '%kernel.root_dir%/../vendor/leafo/scssphp/scss.inc.php'
-            apply_to: '\.scss$'
