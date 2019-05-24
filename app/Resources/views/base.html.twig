@@ -11,6 +11,13 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+
+        {{ include('inc/header.html.twig') }}
+
+        <div class="col-md-4">
+            {{ include('inc/notice.html.twig') }}
+        </div>
+
         {% block body %}{% endblock %}
 
         {% block javascripts %}

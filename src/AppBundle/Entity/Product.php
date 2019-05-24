@@ -11,6 +11,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Product
 {
+    const PERCENT_TVA_ONE = 17;
+
+    const PERCENT_TVA_TWO = 20;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -30,8 +34,7 @@ class Product
     /**
      * @ORM\Column(type="text", nullable=false)
      *
-     * @Assert\GreaterThan(value = 0, message="Le prix HT du produit doit être supérieur à 0.")
-     *
+     * @Assert\NotBlank(message="La description du produit ne doit pas être vide.")
      * @var string
      */
     private $content;
@@ -39,6 +42,8 @@ class Product
     /**
      * @ORM\Column(type="float")
      *
+     * @Assert\GreaterThan(value = 0, message="Le prix HT du produit doit être supérieur à 0.")
+     * @var float
      */
     private $priceHT;
 
